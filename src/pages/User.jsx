@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import AccordionList from "../components/AccordionList";
+import ProfileContent from "../uniques/User/ProfileContent";
 
 const Container = styled.div`
   display: flex;
@@ -58,7 +59,7 @@ const User = () => {
       case "files":
         return <pre>{value}</pre>;
       default:
-        return <pre>{value}</pre>;
+        return <ProfileContent userData={userData} />;
     }
   };
 

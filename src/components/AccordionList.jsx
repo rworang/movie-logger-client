@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   AttachFile,
@@ -22,12 +22,12 @@ const List = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.bgOpaque};
   border-radius: 16px;
-  overflow: clip;
 `;
 
 const AccordionList = ({ listObj, itemComponent, children }) => {
+  const [contentHeight, setContentHeight] = useState(0);
   const [contentVisibility, setContentVisibility] = useState({
-    profile: false,
+    profile: true,
     lists: false,
     ratings: false,
     reviews: false,
@@ -58,6 +58,14 @@ const AccordionList = ({ listObj, itemComponent, children }) => {
     }));
   };
 
+  useEffect(() => {
+    // Update profile content height whenever it changes
+    const profileContentElement = document.getElementById("profile-content");
+    if (profileContentElement) {
+      setContentHeight(profileContentElement.clientHeight);
+    }
+  }, [listObj.profile, contentVisibility.profile]);
+
   if (!listObj || Object.keys(listObj).length === 0) {
     return null;
   }
@@ -72,8 +80,6 @@ const AccordionList = ({ listObj, itemComponent, children }) => {
         isOpen={contentVisibility[key]}
       >
         <AccordionListItem.ContentSlot>
-          {/* <pre>{listObj[key]}</pre> */}
-          {/* {children} */}
           {itemComponent(listObj[key])}
         </AccordionListItem.ContentSlot>
       </AccordionListItem>
@@ -81,7 +87,7 @@ const AccordionList = ({ listObj, itemComponent, children }) => {
   });
 
   return (
-    <Container>
+    <Container style={{ height: contentHeight }}>
       <List>{accordionListItems}</List>
     </Container>
   );
