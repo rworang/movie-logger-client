@@ -14,7 +14,7 @@ import AccordionListItem from "./AccordionListItem";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 820px;
+  width: 792px;
 `;
 
 const List = styled.div`
@@ -25,7 +25,7 @@ const List = styled.div`
   border-radius: 16px;
 `;
 
-const AccordionList = ({ listObj, itemComponent, children }) => {
+const AccordionList = ({ listObj, itemComponent }) => {
   const [contentHeight, setContentHeight] = useState(0);
   const [contentVisibility, setContentVisibility] = useState({
     profile: true,
@@ -81,7 +81,7 @@ const AccordionList = ({ listObj, itemComponent, children }) => {
         isOpen={contentVisibility[key]}
       >
         <AccordionListItem.ContentSlot>
-          {itemComponent(listObj[key])}
+          {itemComponent(key)}
         </AccordionListItem.ContentSlot>
       </AccordionListItem>
     );

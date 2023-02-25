@@ -32,7 +32,7 @@ const Entry = styled.div`
     cursor: default;
   }
   &:hover {
-    background-color: ${({ theme }) => theme.bgOpaque};
+    background-color: ${({ theme }) => theme.bgOpaqueDark};
   }
 `;
 
@@ -117,7 +117,7 @@ const ProfileContent = ({ userData }) => {
     name: false,
     email: false,
     location: false,
-    password: false,
+    changePassword: false,
   });
 
   const editHandler = (key) => {
@@ -128,9 +128,21 @@ const ProfileContent = ({ userData }) => {
     }));
   };
 
-  const changePasswordHandler = () => {};
+  const openChangePassword = () => {
+    setEditToggled((prevState) => ({
+      ...prevState,
+      changePassword: true,
+    }));
+  };
+  const closeChangePassword = () => {
+    setEditToggled((prevState) => ({
+      ...prevState,
+      changePassword: false,
+    }));
+  };
 
-  const { profile } = userData;
+  const profile = userData ? userData.profile : null;
+  console.log(userData);
   return (
     <Container id="profile-content">
       <List>
@@ -255,13 +267,16 @@ const ProfileContent = ({ userData }) => {
 
         <Entry>
           <Panel>
-            <ChangePasswordButton onClick={changePasswordHandler}>
+            <ChangePasswordButton onClick={openChangePassword}>
               Change password
             </ChangePasswordButton>
           </Panel>
         </Entry>
 
-        <ChangePassword toggled={editToggled.password} />
+        <ChangePassword
+          onClose={closeChangePassword}
+          toggled={editToggled.changePassword}
+        />
       </List>
 
       <Customization>

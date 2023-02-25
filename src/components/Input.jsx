@@ -13,7 +13,7 @@ const InputField = styled.input`
   border: none;
   flex-grow: 4;
   margin-top: 2px;
-  margin-bottom: -2px;
+  margin-bottom: -1px;
   font-style: italic;
   &:focus,
   :active {

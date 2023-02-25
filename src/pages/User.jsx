@@ -45,17 +45,19 @@ const User = () => {
     getUserData();
   }, []);
 
-  const itemComponent = (key, value) => {
+  const itemComponent = (key) => {
     // Render different components based on the key
     switch (key) {
       case "lists":
-        return <pre>{value}</pre>;
+        return <div>lists</div>;
       case "reviews":
-        return <pre>{value}</pre>;
+        return <div>reviews</div>;
       case "ratings":
-        return <pre>{value}</pre>;
+        return <div>ratings</div>;
       case "files":
-        return <pre>{value}</pre>;
+        return <div>files</div>;
+      case "settings":
+        return <div>settings</div>;
       default:
         return <ProfileContent userData={userData} />;
     }

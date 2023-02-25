@@ -10,16 +10,16 @@ const ListItemHeader = styled.div`
   padding: 0.6em 1.4em;
   color: ${({ theme }) => theme.textSoft};
   cursor: pointer;
-  &:hover {
-    background-color: ${({ theme }) => theme.bgOpaque};
-  }
-  &:first-of-type {
+  &:first-child {
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
   }
-  &:last-of-kind {
+  &:last-child {
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
+  }
+  &:hover {
+    background-color: ${({ theme }) => theme.bgLight};
   }
 `;
 
