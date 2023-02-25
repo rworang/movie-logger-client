@@ -2,8 +2,10 @@ import { Check, Close, DriveFileRenameOutline } from "@mui/icons-material";
 import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "../../components/Input";
+import ChangePassword from "./ChangePassword";
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   align-items: stretch;
   width: 100%;
@@ -13,7 +15,7 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   padding-right: 12px;
-  margin-top: 5px;
+  padding-top: 5px;
   flex: 5;
 `;
 
@@ -42,7 +44,7 @@ const Panel = styled.div`
   padding: 0 4px;
 `;
 
-const ChangePassword = styled.button`
+const ChangePasswordButton = styled.button`
   display: flex;
   width: 100%;
   height: 100%;
@@ -114,6 +116,8 @@ const ProfileContent = ({ userData }) => {
   const [editToggled, setEditToggled] = useState({
     name: false,
     email: false,
+    location: false,
+    password: false,
   });
 
   const editHandler = (key) => {
@@ -123,6 +127,8 @@ const ProfileContent = ({ userData }) => {
       [key]: !state[key],
     }));
   };
+
+  const changePasswordHandler = () => {};
 
   const { profile } = userData;
   return (
@@ -205,10 +211,57 @@ const ProfileContent = ({ userData }) => {
         </Entry>
 
         <Entry>
+          <Label>Location:</Label>
+          {!editToggled.location ? (
+            <Value onClick={() => editHandler("location")}>
+              {profile.location}
+            </Value>
+          ) : (
+            <Input
+              name="location"
+              type="text"
+              placeholder={profile.location}
+              onChange={() => {
+                /* handle input change */
+              }}
+            />
+          )}
+          <EditWrapper>
+            {!editToggled.location ? (
+              <Edit title="Change location">
+                <DriveFileRenameOutline
+                  fontSize="small"
+                  onClick={() => editHandler("location")}
+                />
+              </Edit>
+            ) : (
+              <>
+                <Edit title="Save changes">
+                  <Check
+                    fontSize="small"
+                    onClick={() => editHandler("location")}
+                  />
+                </Edit>
+                <Edit title="Discard changes">
+                  <Close
+                    fontSize="small"
+                    onClick={() => editHandler("location")}
+                  />
+                </Edit>
+              </>
+            )}
+          </EditWrapper>
+        </Entry>
+
+        <Entry>
           <Panel>
-            <ChangePassword>Click here to change password</ChangePassword>
+            <ChangePasswordButton onClick={changePasswordHandler}>
+              Change password
+            </ChangePasswordButton>
           </Panel>
         </Entry>
+
+        <ChangePassword toggled={editToggled.password} />
       </List>
 
       <Customization>
