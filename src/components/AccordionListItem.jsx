@@ -10,6 +10,17 @@ const ListItemHeader = styled.div`
   padding: 0.6em 1.4em;
   color: ${({ theme }) => theme.textSoft};
   cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.bgOpaque};
+  }
+  &:first-of-type {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+  &:last-of-kind {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
 `;
 
 const Title = styled.h2`
@@ -29,7 +40,7 @@ const Icon = styled.span`
 const ListItemContent = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.bgOpaque};
-  padding: 0 26px;
+  padding: 0 12px;
   height: ${({ isOpen, contentHeight }) =>
     isOpen ? `${contentHeight}px` : "0"};
   overflow: hidden;

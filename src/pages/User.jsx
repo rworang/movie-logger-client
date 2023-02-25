@@ -38,9 +38,7 @@ const User = () => {
         return null;
       }
 
-      const res = await axios.get(
-        `http://localhost:1784/api/users/find/${currentUser._id}`
-      );
+      const res = await axios.get(`/api/users/find/${currentUser._id}`);
       res.data.settings = [];
       setUserData(res.data);
     };

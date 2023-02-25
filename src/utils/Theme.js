@@ -6,6 +6,7 @@ export const darkTheme = {
   bgOpaqueHover: "#ffffff1a",
   text: "rgba(255, 255, 255, 0.87)",
   textSoft: "#aaaaaa",
+  textSofter: "#696969",
   soft: "#373737",
 };
 
@@ -17,5 +18,6 @@ export const lightTheme = {
   bgOpaqueHover: "#0000001a",
   text: "#0f0f0f",
   textSoft: "#606060",
+  textSofter: "#aaaaaa",
   soft: "#f5f5f5",
 };

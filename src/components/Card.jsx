@@ -14,7 +14,7 @@ const Poster = styled.img`
 const Card = () => {
   return (
     <Container>
-      <Poster src="http://localhost:5173/buffaloed.jpg" />
+      <Poster src="http://localhost:5000/buffaloed.jpg" />
     </Container>
   );
 };

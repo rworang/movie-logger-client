@@ -14,11 +14,12 @@ import AccordionListItem from "./AccordionListItem";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 780px;
+  width: 820px;
 `;
 
 const List = styled.div`
   display: flex;
+  height: auto;
   flex-direction: column;
   background-color: ${({ theme }) => theme.bgOpaque};
   border-radius: 16px;

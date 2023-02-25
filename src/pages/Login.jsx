@@ -49,7 +49,7 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post("http://localhost:1784/api/auth/login", {
+      const res = await axios.post("/api/auth/login", {
         name,
         password,
       });

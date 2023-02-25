@@ -48,7 +48,7 @@ const Navbar = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:1784/api/auth/logout");
+      await axios.post("/api/auth/logout");
       dispatch(logout());
     } catch (err) {
       console.log(err);
