@@ -18,7 +18,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(65%);
+  height: 78%;
   margin-top: -3%;
   width: 56%;
   background-color: ${({ theme }) => theme.bgLight};
@@ -62,7 +62,7 @@ const Form = styled.div`
 `;
 const FormRow = styled.div`
   display: flex;
-  height: 28px;
+  height: 32px;
 
   > label {
     display: flex;
@@ -72,6 +72,23 @@ const FormRow = styled.div`
     padding-right: 8px;
     color: ${({ theme }) => theme.textSoft};
     cursor: default;
+  }
+`;
+
+const SaveButton = styled.button`
+  display: flex;
+  padding: 8px 12px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: ${({ theme }) => theme.textSoft};
+  background-color: ${({ theme }) => theme.bgOpaque};
+  &:hover {
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.bgOpaqueHover};
   }
 `;
 
@@ -100,6 +117,7 @@ const ChangePassword = () => {
             <Input name="confirmNewPassword" type="password" />
           </FormRow>
         </Form>
+        <SaveButton>Save password</SaveButton>
       </Wrapper>
     </Container>
   );
